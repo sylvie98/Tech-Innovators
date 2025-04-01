@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+     :root {
+    --primary-color: #e0ecf5;
+    --secondary-color: #b6bab7;
+    --accent-color: #f3aba4;
+    --text-color: #2c2c2c;
+    --background-color: #f4f4f4;
+    --dark-bg: #1b1a1a;
+    --dark-text: #070505;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    padding: 15px;
+    color: rgb(115, 111, 111);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Top - Logo, Title, Search */
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-top div {
+    display: flex;
+    align-items: center;
+}
+
+.header-top img {
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--text-color);
+    margin-right: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar button {
+    padding: 10px;
+    border: none;
+    background-color: var(--dark-text);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: var(--accent-color);
+}
+
+/* Navigation Bar */
+.header-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+nav a {
+    color: rgb(109, 106, 106);
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+nav a:hover {
+    background: var(--accent-color);
+    color: white;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Active state */
+nav a.active {
+    background: var(--accent-color);
+    color: white;
+    font-weight: bold;
+}
+
+/* Dark Mode Button */
+#darkModeButton {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    margin-left: 15px;
+}
+
+#darkModeButton:hover {
+    background: var(--accent-color);
+}
+
+/* Mobile Menu */
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .search-bar {
+        margin-top: 10px;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: var(--primary-color);
+        position: absolute;
+        top: 60px;
+        width: 100%;
+        left: 0;
+        padding: 10px;
+        text-align: center;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: var(--secondary-color);
+    padding: 20px;
+    color: white;
+    position: fixed;
+    left: 0;
+    height: 100vh; /* Full height for better usability */
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Sidebar Heading */
+.sidebar h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Announcement Marquee */
+.sidebar marquee {
+    font-size: 16px;
+    line-height: 1.5;
+}
+        .register-form {
+        max-width: 500px;
+        margin: auto;
+        background: var(--background-color);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    fieldset {
+        border: none;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+    legend {
+        font-weight: bold;
+        color: var(--text-color);
+    }
+    label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid var(--secondary-color);
+        border-radius: 5px;
+    }
+    .gender-options {
+        display: flex;
+        gap: 10px;
+    }
+    .form-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+    button {
+        background: var(--accent-color);
+        border: none;
+        padding: 10px 15px;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    button:hover {
+        background: var(--secondary-color);
+    }
+    @media (max-width: 768px) {
+        div{
+            grid-template-columns: 1fr;
+        }
+        .sidebar {
+            width: 100%;
+            height: auto;
+            position: relative;
+            padding: 15px;
+            text-align: center;
+            border-radius: 0;
+        }
+        .register-form {
+            width: 95%;
+            padding: 15px;
+        }
+    
+        .gender-options {
+            flex-direction: column; /* Places items in a vertical list */
+        }
+    
+        .form-buttons {
+            flex-direction: column; /* Buttons go to the next line */
+            gap: 15px;
+        }
+    
+        button {
+            width: 100%; /* Makes buttons full-width */
+        }
+    }
+    
+
+    footer {
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); 
+    color: rgb(80, 77, 77); 
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Wrap icons if screen is small */
+}
+
+.social-links p {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.social-icon img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    mix-blend-mode: multiply;
+}
+
+.social-icon:hover img {
+    transform: scale(1.2);
+    filter: brightness(1.3);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .social-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <!-- Upper Section: Logo, Title, and Search Box -->
+        <div class="header-top">
+            <div>
+                <img src="tech.jpeg" width="100" height="100" alt="Tech Innovation">
+                <p>Tech Innovators Inc</p>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button>Search</button>
+            </div>
+        </div>
+    
+        <!-- Lower Section: Navbar and Dark Mode -->
+        <div class="header-bottom">
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <nav>
+                <ul id="menu">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT US</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="feature.html">FEATURE</a></li>
+                    <li><a href="register.html"  class="active">REGISTRATION</a></li>
+                    <li><a href="login.html">LOGIN</a></li>
+                </ul>
+            </nav>
+            <button id="darkModeButton" onclick="toggleDarkMode()">
+                <i class="fas fa-sun" id="darkModeIcon"></i> <!-- Light Mode Icon -->
+            </button>
+        </div>
+    </header>
+    <!--left sidebar-->
+    <div>
+    <aside class="sidebar">
+        <h2>ANNOUNCEMENT </h2>
+        <marquee direction="up" scrollamount="2">
+            <p>We are thrilled to announce the launch of Tech Innovators’ latest initiative, designed to drive innovation, empower creators, and shape the future of technology! 🎉</p>
+        </marquee>
+    </aside>
+<main>
+    <form class="register-form">
+        <fieldset>
+            <legend>REGISTER FORM</legend>
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required>
+
+            <label for="date">Date Of Birth</label>
+            <input type="date" id="date" required>
+
+            <label>Gender</label>
+            <div class="gender-options">
+                <input type="radio" name="gender" id="female" required>
+                <label for="female">Female</label>
+                <input type="radio" name="gender" id="male" required>
+                <label for="male">Male</label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Contact Information</legend>
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" required>
+
+            <label for="address">Address</label>
+            <textarea id="address" required></textarea>
+        </fieldset>
+
+        <fieldset>
+            <legend>Account Information</legend>
+            <label for="user">Username</label>
+            <input type="text" id="user" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+
+            <label for="confirm">Confirm Password</label>
+            <input type="password" id="confirm" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Preferences</legend>
+            <label for="picture">Profile Picture</label>
+            <input type="file" id="picture" required>
+
+            <label for="bio">Bio</label>
+            <textarea id="bio" required></textarea>
+        </fieldset>
+
+        <div class="form-buttons">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </div>
+    </form>
+</main>
+</div>
+<!--footer-->
+<footer>
+    <div class="footer-container">
+        <p>&copy; 2025 Tech Innovators Inc. All rights reserved.</p>
+        <div class="social-links">
+            <p>Follow us on:</p>
+            <a href="#" class="social-icon">
+                <img src="facebook.jpeg" alt="Facebook">
+            </a>
+            <a href="#" class="social-icon">
+                <img src="instagram.jpeg" alt="Instagram">
+            </a>
+            <a href="#" class="social-icon">
+                <img src="linkd.png" alt="LinkedIn">
+            </a>
+        </div>
+    </div>
+</footer>
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            let button = document.getElementById("darkModeButton");
+            let icon = document.getElementById("darkModeIcon");
+
+            // Toggle between sun and moon icon based on the mode
+            if (document.body.classList.contains("dark-mode")) {
+                icon.classList.remove("fa-sun");
+                icon.classList.add("fa-moon"); // Change to moon icon in dark mode
+            } else {
+                icon.classList.remove("fa-moon");
+                icon.classList.add("fa-sun"); // Change to sun icon in light mode
+            }
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.classList.toggle("show");
+        }
+    </script>
+</body>
+</html>
